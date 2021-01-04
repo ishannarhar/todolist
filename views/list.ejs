@@ -1,0 +1,32 @@
+<%- include('header'); -%>
+<div class="box" id="heading">
+    <h1><%=kindOfDay%></h1>
+</div>
+<%let day = kindOfDay%>
+<%if (kindOfDay === "Home"){%>
+  <% day = ""%>
+<%}%>
+
+
+<div class="box">
+  <%  kindOfItem.forEach(function(item){%>
+    <form class="item" action="/delete" method="post">
+      <div class="item">
+        <input type="checkbox" name="checkbox" value="<%=item._id%>" onChange="this.form.submit()" >
+          <p><%=item.name%></p>
+
+    </div>
+    </form>
+
+<%})%>
+
+<form action="/<%=day%>" class="item" method="post">
+  <input type="text" name="toDoItem" placeholder="New Item" autocomplete="off">
+  <button type="submit" name="button">+</button>
+</form>
+</div>
+
+
+
+
+<%- include('footer'); -%>
